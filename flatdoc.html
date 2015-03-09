@@ -64,9 +64,12 @@
       $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
       $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
 
+    });
+
+
+    $(window).load(function(){
       //Hide the "best viewed" since already in flatdoc
-      //TODO remove
-      console.log($('p:contains(flatdoc)'));
+      //Do in window.load since the selector isn't ready by document.ready
       $('p:contains(flatdoc)').hide();
     });
   </script>
