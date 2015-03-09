@@ -64,6 +64,8 @@
       $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
       $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
 
+      //Hide the "best viewed" since already in flatdoc
+      $('p:contains(flatdoc)').hide();
     });
   </script>
 
