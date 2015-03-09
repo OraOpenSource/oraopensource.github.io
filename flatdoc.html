@@ -43,11 +43,27 @@
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
-      user = getParameterByName('user'),
       repo = getParameterByName('repo'),
       path = getParameterByName('path');
+
     Flatdoc.run({
-      fetcher: Flatdoc.github(user + '/' + repo, path)
+      fetcher: Flatdoc.github('oraopensource/' + repo, path)
+    });
+
+    $(document).ready(function() {
+      var
+        projectUrl;
+
+      if (repo.toLowerCase() == 'logger'){
+        projectUrl = 'logger';
+      }
+      projectUrl = 'http://oraopensource.com/' + projectUrl;
+
+
+      $('#github-repo').text(repo).attr('href', projectUrl);
+      $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
+      $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
+
     });
   </script>
 
@@ -69,10 +85,10 @@
   <div class='header'>
     <div class='left'>
       <h1><a href="http://oraopensource.com">OraOpenSource</a>: &nbsp;</h1>
-      <h1><a href="http://oraopensource.com/logger">Logger</a></h1>
+      <h1><a id="github-repo" href="">Logger</a></h1>
       <ul>
-        <li><a href='https://github.com/oraopensource/logger'>View on GitHub</a></li>
-        <li><a href='https://github.com/oraopensource/logger/issues'>Issues</a></li>
+        <li><a id="github-view" href=''>View on GitHub</a></li>
+        <li><a id="github-issues" href=''>Issues</a></li>
       </ul>
     </div>
     <div class='right'>
