@@ -51,13 +51,16 @@
     });
 
     $(document).ready(function() {
-      var
-        projectUrl;
+      var projectUrl;
+      var urlMap = {
+        "logger" : "logger",
+        "oraclexe-apex" : "oracle-xe-apex-vm",
+        "node4ords" : "node4ords"
+      };
 
-      if (repo.toLowerCase() == 'logger'){
-        projectUrl = 'logger';
-      }
-      projectUrl = 'http://oraopensource.com/' + projectUrl;
+      var projectUrl = "http://oraopensource.com/";
+      var projectPath = urlMap[repo.toLowerCase()];
+      projectUrl = projectPath ? projectUrl + projectPath : projectUrl;
 
 
       $('#github-repo').text(repo).attr('href', projectUrl);
