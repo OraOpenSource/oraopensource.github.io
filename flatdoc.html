@@ -71,7 +71,7 @@
       var projectProperties = repoPropertyMap[repo.toLowerCase()];
       if (projectProperties){
         if (projectProperties.path){
-          projectUrl += "projectPath";
+          projectUrl += projectProperties.path;
         }
 
         if (projectProperties.title){
