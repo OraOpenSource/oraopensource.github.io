@@ -62,18 +62,22 @@
       var projectPath = urlMap[repo.toLowerCase()];
       projectUrl = projectPath ? projectUrl + projectPath : projectUrl;
 
-
       $('#github-repo').text(repo).attr('href', projectUrl);
       $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
       $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
 
     });
 
-
     $(window).load(function(){
       //Hide the "best viewed" since already in flatdoc
       //Do in window.load since the selector isn't ready by document.ready
       $('p:contains(flatdoc)').remove();
+
+      //Get relative urls to pass the path as a query string parameter
+      $('a:not([href^=http],[href^=#],[href=""])').each(function(){
+        var queryString = 'repo='+repo + '&path=' + $(this).attr('href');
+        $(this).attr('href', window.location.pathname + '?' + queryString);
+      });
     });
   </script>
 
