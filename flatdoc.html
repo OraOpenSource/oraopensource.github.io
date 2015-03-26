@@ -50,7 +50,7 @@
       fetcher: Flatdoc.github('oraopensource/' + repo, path)
     });
 
-    $(document).ready(function() {
+    $(document).on('flatdoc:ready', function() {
       var projectUrl;
       var repoPropertyMap = {
         "logger" : {
@@ -88,15 +88,7 @@
           $('meta[name="description"]').remove();
         }
       }
-
-      $('#github-repo').text(repo).attr('href', projectUrl);
-      $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
-      $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
-      $('#github-stars').attr('src','http://ghbtns.com/github-btn.html?user=oraopensource&repo=' + repo + '&type=watch&count=true');
-
-    });
-
-    $(window).load(function(){
+      
       //Hide the "best viewed" since already in flatdoc
       //Do in window.load since the selector isn't ready by document.ready
       $('p:contains(flatdoc)').remove();
@@ -106,6 +98,12 @@
         var queryString = 'repo='+repo + '&path=' + $(this).attr('href');
         $(this).attr('href', window.location.pathname + '?' + queryString);
       });
+
+      $('#github-repo').text(repo).attr('href', projectUrl);
+      $('#github-view').attr('href','https://github.com/oraopensource/' + repo);
+      $('#github-issues').attr('href','https://github.com/oraopensource/' + repo + '/issues');
+      $('#github-stars').attr('src','http://ghbtns.com/github-btn.html?user=oraopensource&repo=' + repo + '&type=watch&count=true');
+
     });
   </script>
 
